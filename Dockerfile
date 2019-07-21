@@ -10,5 +10,5 @@ RUN ./gradlew build
 
 EXPOSE 80:8080
 
-ENTRYPOINT ["java", "-javaagent:/opt/newrelic/newrelic.jar", "-jar", "./build/libs/backend-0.0.1.jar"]
+#ENTRYPOINT ["java", "-javaagent:/opt/newrelic/newrelic.jar", "-jar", "./build/libs/backend-0.0.1.jar"]
 
