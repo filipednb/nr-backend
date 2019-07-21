@@ -2,8 +2,6 @@ FROM rigoford/alpine-java-newrelic
 
 VOLUME /tmp
 
-EXPOSE 80
-
 RUN mkdir /app
 WORKDIR /app
 COPY . /app
