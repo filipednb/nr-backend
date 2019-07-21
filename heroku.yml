@@ -1,5 +1,7 @@
 build:
   docker:
     web: Dockerfile
-run:
-  web: java -jar backend-0.0.1-SNAPSHOT.jar
+release:
+  image: web
+  command:
+    - echo 'Starting server after deployment!';
