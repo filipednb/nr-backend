@@ -1,15 +1,13 @@
 FROM rigoford/alpine-java-newrelic
 
-COPY . .
+VOLUME /tmp
 
-RUN sh -c "./gradlew build -x test"
+EXPOSE 80
 
-COPY ./build/libs/backend-0.0.1-SNAPSHOT.jar /usr/app/
+RUN mkdir /app
+WORKDIR /app
+COPY . /app
+RUN ./gradlew build
 
-WORKDIR /usr/app
+ENTRYPOINT ["java", "-javaagent:/opt/newrelic/newrelic.jar", "-jar", "./build/libs/backend-0.1.0.jar"]
 
-RUN sh -c "touch backend-0.0.1-SNAPSHOT.jar'
-
-ENTRYPOINT ["java","-jar","backend-0.0.1-SNAPSHOT.jar"]
-
-CMD ["tail", "-f", "/dev/null"]
