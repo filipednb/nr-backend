@@ -8,9 +8,9 @@ COPY build.gradle settings.gradle gradlew $APP_HOME
 
 COPY gradle $APP_HOME/gradle
 
-RUN ./gradlew build || return 0
-
 COPY . .
+
+RUN ./gradlew build
 
 COPY ./build/libs/backend-0.0.1-SNAPSHOT.jar /usr/app/
 
