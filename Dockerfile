@@ -9,5 +9,7 @@ WORKDIR /app
 COPY . /app
 RUN ./gradlew build
 
-ENTRYPOINT ["java", "-javaagent:/opt/newrelic/newrelic.jar", "-jar", "./build/libs/backend-0.1.0.jar"]
+COPY newrelic.yml /opt/newrelic/newrelic.yml
+
+ENTRYPOINT ["java", "-javaagent:/opt/newrelic/newrelic.jar", "-jar", "./build/libs/backend-0.0.1.jar"]
 
